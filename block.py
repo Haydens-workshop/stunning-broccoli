@@ -22,26 +22,23 @@ class Block:
     
        
        
-@staticmethod
-def mine_block(last_block, data):
-        #mine block based on the last_block and data.
+    @staticmethod
 
-    timestamp = time.time_ns()
-    last_hash = last_block.hash
-    hash = crypto_hash(timestamp, last_hash, data)
-
-    return Block(timestamp, last_hash, hash, data)
+    def mine_block(last_block, data):
+      #mine block based on the last_block and data.
+      timestamp = time.time()
+      last_hash = last_block.hash
+      hash = crypto_hash(timestamp, last_hash, data)
+      return Block(timestamp, last_hash, hash, data)
 
 
   
   
   
-  
-@staticmethod
-def genesis():
-#generating genesis block.
-
-    return Block(1, 'genesis_last_hash', 'genesis_hash', [])
+  #generating genesis block.
+    @staticmethod
+    def genesis():
+      return Block(1, 'genesis_last_hash', 'genesis_hash', [])
 
 def main():
     genesis_block = Block.genesis()
